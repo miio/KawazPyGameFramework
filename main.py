@@ -4,12 +4,14 @@ from pygame.locals import *
 from pywaz.core import *
 from pywaz.input import *
 from pywaz.utils import *
+from pywaz.graphic import *
 
 class MainScene(Scene):
     def __init__(self):
         self.image = Image(0,0,100,100,u"resources/kawaz.png")
         
     def act(self):
+        font = Font('')
         if Key.is_press(K_a):
             self.image.x += 1
         if Mouse.is_press("RIGHT"):

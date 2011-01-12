@@ -1,6 +1,7 @@
-#Wed Jan 12 20:14:35 JST 2011
+#Wed Jan 12 20:29:26 JST 2011
 eclipse.preferences.version=1
 encoding//pywaz/core.py=utf-8
+encoding//pywaz/graphic.py=utf-8
 encoding//pywaz/input.py=utf-8
 encoding//pywaz/utils.py=utf-8
 encoding/main.py=utf-8

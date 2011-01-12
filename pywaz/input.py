@@ -2,8 +2,7 @@
 import pygame
 from pygame.locals import *
 
-class Key(object):
-    
+class Key(object):    
     def __init__(self):
         raise NotImplementedError
     
