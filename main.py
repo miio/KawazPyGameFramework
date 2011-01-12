@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 import pygame
 from pygame.locals import *
-from libs.core import *
-from libs.input import *
-from libs.utils import *
+from pywaz.core import *
+from pywaz.input import *
+from pywaz.utils import *
 
 class MainScene(Scene):
     def __init__(self):
