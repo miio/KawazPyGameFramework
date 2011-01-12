@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pygame
 from pygame.locals import *
+from input import *
 
 class Window(object):
     def __init__(self, width=640, height=480, caption=u"Hello, World"):
@@ -115,6 +116,7 @@ class Game(object):
         while 1:
             cls._clock.tick(60)
             cls._screen.fill((0,0,0)) # 画面のクリア
+            Key.poll()
             cls.act()
             cls.render()
             pygame.display.flip() # 画面を反映
