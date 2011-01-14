@@ -11,7 +11,7 @@ class MainScene(Scene):
         self.image = Image(0,0,100,100,u"resources/kawaz.png")
         
     def act(self):
-        font = Font('')
+        
         if Key.is_press(K_a):
             self.image.x += 1
         if Mouse.is_press("RIGHT"):
@@ -22,7 +22,7 @@ class MainScene(Scene):
 
 def main():
     pygame.init() # pygameの初期化
-    Game.get_scene_manager().set_scenes([MainScene()])
+    Game.get_scene_manager().set_scenes((MainScene(),))
     return Game.mainloop()
 
 if __name__ == '__main__': main()

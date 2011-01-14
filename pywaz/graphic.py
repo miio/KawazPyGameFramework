@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *
 
 from core import *
+import os
 
 class Obj(object):
     def __init__(self, x=0, y=0, w=100, h=100):
@@ -39,10 +40,12 @@ class Image(Obj):
         super(Image, self).render()
         Game.get_screen().blit(self.image, self.rect)
         
-class Font(Obj):
+class Font(Obj): 
     def __init__(self, string=u"", size=16):
         super(Font, self).__init__()
-        self._font = pygame.font.Font(None, size)
+        font_path = os.path.join('/Library/Fonts','Osaka.ttf')
+        self._font = pygame.font.Font(font_path, size)
+        
         self._string = string
         self._color = (255, 255, 255)
         _generate_text()
