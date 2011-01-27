@@ -4,46 +4,46 @@ import math
 class Vector(object):
     u"""2Dベクトルを扱うクラス"""
     def __init__(self, x=0, y=0):
-        set(x, y)
+        self.set(x, y)
         
     def set(self, x, y):
         self.x = x
         self.y = y
         
-    def add(self, v):
+    def __add__(self, v):
         if not isinstance(v, Vector):
             raise TypeError
         self.x += v.x
         self.y += v.y
         return self
         
-    def sub(self, v):
+    def __sub__(self, v):
         if not isinstance(v, Vector):
             raise TypeError
         self.x -= v.x
         self.y -= v.y
         return self
     
-    def eq(self, v):
+    def __eq__(self, v):
         if not isinstance(v, Vector):
             raise TypeError
         return self.x == v.x and self.y == v.y
     
-    def mul(self, v):
+    def __mul__(self, v):
         if isinstance(v, Vector):
             return scalar_product(v)
         elif isinstance(v, Number):
             return scale(v)
         raise TypeError
     
-    def div(self, n):
+    def __div__(self, n):
         self.x /= n
         self.y /= n
         return self
     
     def scale(self, n):
-        self.x *= v
-        self.y *= v
+        self.x *= n
+        self.y *= n
         return self
         
     def scalar_product(self, v):
@@ -56,12 +56,14 @@ class Vector(object):
         if self.length()==0:
             return Vector(0, 0)
         else:
-            return scale(1/self.length())
+            return self.scale(1/self.length())
         
     def resize(self, size):
         return self.normalize().scale(size)
     
     def angle(self):
+        if self.x == 0:
+            return 90
         return Vector.rad_to_deg(math.atan(self.y/self.x))
     
     def rotate(self, deg):
@@ -82,6 +84,15 @@ class Vector(object):
     
     def to_pos(self):
         return (self.x, self.y)
+    
+    def divide(self, length):
+        times = int(self.length()/length)
+        mod = self.length()-length*times
+        vs = []
+        for i in range(times):
+            vs.append(self.clone().resize(length))
+        vs.append(self.clone().resize(mod))
+        return vs
     
     @classmethod
     def rad_to_deg(cls, rad):
